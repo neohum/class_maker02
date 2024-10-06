@@ -39,8 +39,8 @@
                                 </form>
                                 <br>
                                 <br>
-                                {{-- <a type="submit" href="{{ route('step1') }}" class="btn btn-primary pull-left">반편성
-                                    하기</a> --}}
+                                <a type="submit" href="{{ route('step01') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&next_class={{ $_REQUEST['next_class'] }}" class="btn btn-primary pull-left">반편성
+                                    하기</a>
                             </div>
                         </div>
                     </div>

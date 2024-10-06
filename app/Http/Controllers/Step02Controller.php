@@ -14,22 +14,31 @@ class Step02Controller extends Controller
     public function index(Request $request)
     {
         $old_data = array();
-
+        $new_data = array();
         for ($i = 1; $i <= $_REQUEST['next_class']; $i++) {
 
                 $old_data[$i] = DB::table('step01s')
-                    ->where('current_class', $i)
-                    ->orderBy('numbers', 'asc')
-                    ->get();
-                $new_data[$i] = DB::table('step01s')
                     ->where('next_class', $i)
+                    ->orderBy('current_class', 'asc')
+                    ->orderBy('sex', 'desc')
+                    ->orderBy('name', 'asc')
+                    ->get();
+            }
+
+
+
+                $new_data = DB::table('step01s')
+                    ->where('school_name', $_REQUEST['school_name'])
                     ->orderBy('next_class', 'asc')
                     ->orderBy('sex', 'desc')
                     ->orderBy('name', 'asc')
                     ->get();
 
-            }
-        $cells = array(
+            // dd($new_data);
+            #print_r($new_data);
+
+
+            $cells = array(
             'A' => array(15, 'school_name','학교명'),
             'B' => array(15, 'grade','학년'),
             'C' => array(15, 'class','반'),
@@ -72,7 +81,7 @@ class Step02Controller extends Controller
         $sheet->getStyle('A1:K1')->getAlignment()->setIndent(1);
         $sheet->getStyle('A1:K1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
-        $row = 2;
+
         // foreach ($old_data as $key => $value) {
         //     foreach ($value as $key2 => $value2) {
         //         $sheet->setCellValue('A'.$key2, $value2->school_name);
@@ -88,9 +97,11 @@ class Step02Controller extends Controller
         //         $sheet->setCellValue('K'.$key2, $value2->next_class);
         //         $row++;
         //     }
-        for ($i = 2; $row = array_shift($new_data); $i++) {
+        for ($i = 0; $i<count($new_data); $i++) {
 	    foreach ($cells as $key => $val) {
-	        $sheet->setCellValue($key.$i, $row[$val[1]]);
+                $value = str_replace('"', '', $val[1]);
+            // dd($new_data[$i]);
+	        $sheet->setCellValue($key.($i+2), $new_data[$i]->$value);
 	    }
 
 	}
@@ -100,10 +111,11 @@ class Step02Controller extends Controller
 	header('Content-Disposition: attachment; filename="'.$filename.'.xlsx"');
 
 	$writer = new Xlsx($spreadsheet);
+    ob_end_clean();
 	$writer->save('php://output');
+        exit();
 
-
-        return view('step02');
+        //return view('step02');
 
 
     }

@@ -6,7 +6,7 @@
 
 
 
-<a type="submit" href="{{ route('step02') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&next_class={{ $_REQUEST['next_class'] }}" class="btn btn-primary pull-left">반편성 하기</a>
+<a type="submit" href="{{ route('step02') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&next_class={{ $_REQUEST['next_class'] }}" class="btn btn-primary pull-left">편성결과 엑셀로 받기</a>
 
 
 
@@ -27,6 +27,7 @@
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
+                                            <th>학교명</th>
                                             <th>학년</th>
                                             <th>반</th>
                                             <th>이름</th>
@@ -35,10 +36,11 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @for($i = 1; $i <= $next_class; $i++)
-                                        @foreach ( $new_data[$i] as $row)
+
+                                        @foreach ( $new_data as $row)
 
                                         <tr>
+                                            <td>{{ $row->school_name }}</td>
                                             <td>{{ $row->grade }}</td>
                                             <td>{{ $row->class }}</td>
                                             <td>{{ $row->name }}</td>
@@ -46,7 +48,7 @@
                                             <td>{{ $row->next_class }}</td>
                                         </tr>
                                         @endforeach
-                                        @endfor
+
 
                                     </tbody>
                                 </table>

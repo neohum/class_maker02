@@ -37,15 +37,15 @@ class Step01Controller extends Controller
                     'updated_at' => now()
                 ]);
             }
-            for ($i = 1; $i <= $_REQUEST['next_class']; $i++) {
 
-                $new_data[$i] = DB::table('step01s')
-                    ->where('next_class', $i)
+
+                $new_data = DB::table('step01s')
+                    ->where('school_name', $_REQUEST['school_name'])
                     ->orderBy('next_class', 'asc')
                     ->orderBy('sex', 'desc')
                     ->orderBy('name', 'asc')
                     ->get();
-            }
+           
 
               for ($i = 1; $i <= $_REQUEST['next_class']; $i++) {
 

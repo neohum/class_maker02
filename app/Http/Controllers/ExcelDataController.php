@@ -33,7 +33,7 @@ public function index(Request $request)
         $spreadsheet = IOFactory::load($filePath);
         $sheet = $spreadsheet->getActiveSheet();
         $rows = $sheet->toArray();
-        
+
         foreach ($rows as $row) {
 
             // 디버깅을 위해 각 행의 데이터를 로그에 출력
@@ -61,7 +61,6 @@ public function index(Request $request)
 
         DB::commit();
 
-        DB::commit();
 
         return response()->json(['success' => 'File uploaded and data imported successfully!']);
     } catch (\Exception $e) {

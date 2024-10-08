@@ -11,13 +11,36 @@ class Step01Controller extends Controller
 {
     //
     public function index(Request $request)
-    {
-        if ( isset($_REQUEST['school_name']) && isset($_REQUEST['current_grade']) && isset($_REQUEST['next_class']) ) {
-            $data = DB::table('excel_data')
-                ->where('school_name', $request->school_name)
-                ->orderBy('total', 'desc')
-                ->get();
-
+    { 
+           $case = rand(1, 4);
+            //
+           switch ($case)
+            {
+                case 1:
+                    $data = DB::table('excel_data')
+                        ->where('school_name', $request->school_name)
+                        ->orderBy('total', 'desc')
+                        ->get();
+                    break;
+                case 2:
+                    $data = DB::table('excel_data')
+                        ->where('school_name', $request->school_name)
+                        ->orderBy('atitude', 'desc')
+                        ->get();
+                    break;
+                case 3:
+                    $data = DB::table('excel_data')
+                        ->where('school_name', $request->school_name)
+                        ->orderBy('ability', 'desc')
+                        ->get();
+                    break;
+                case 4:
+                    $data = DB::table('excel_data')
+                        ->where('school_name', $request->school_name)
+                        ->orderBy('friendship', 'desc')
+                        ->get();
+                    break;
+            }
             foreach ($data as $key => $value) {
 
 
@@ -69,9 +92,7 @@ class Step01Controller extends Controller
                 'data' => $new_data,
                 'old_data' => $old_data
             ]);
-        } else {
-            return view('step01');
-        }
+        
 
 
     }

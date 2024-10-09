@@ -11,37 +11,70 @@ class Step01Controller extends Controller
 {
     //
     public function index(Request $request)
-    { 
+    {
            $case = rand(1, 4);
+           $name_repeat =[];
+
             //
            switch ($case)
             {
                 case 1:
                     $data = DB::table('excel_data')
-                        ->where('school_name', $request->school_name)
+                        ->where('school_name', $_REQUEST['school_name'])
+                        ->where('grade', $_REQUEST['current_grade'])
                         ->orderBy('total', 'desc')
                         ->get();
+
                     break;
                 case 2:
                     $data = DB::table('excel_data')
-                        ->where('school_name', $request->school_name)
+                        ->where('school_name', $_REQUEST['school_name'])
+                        ->where('grade', $_REQUEST['current_grade'])
                         ->orderBy('atitude', 'desc')
                         ->get();
                     break;
                 case 3:
                     $data = DB::table('excel_data')
-                        ->where('school_name', $request->school_name)
+                        ->where('school_name', $_REQUEST['school_name'])
+                        ->where('grade', $_REQUEST['current_grade'])
                         ->orderBy('ability', 'desc')
                         ->get();
                     break;
                 case 4:
                     $data = DB::table('excel_data')
-                        ->where('school_name', $request->school_name)
+                        ->where('school_name', $_REQUEST['school_name'])
+                        ->where('grade', $_REQUEST['current_grade'])
                         ->orderBy('friendship', 'desc')
                         ->get();
                     break;
             }
+
+
+
+
             foreach ($data as $key => $value) {
+
+
+                if (DB::table('step01s')
+                        ->where('school_name', $request->school_name)
+                        ->where('grade', $value->grade)
+                        ->select('name_split')
+                        ->havingRaw('count(name_split) > 2')
+                        ->groupBy('name_split')
+                        ->get('name_split')
+                    ){
+                     if(DB::table('excel_data')
+                    ->where('school_name', $request->school_name)
+                    ->where('grade', $value->grade)
+                    ->where('name_split', $value->name_split)
+                    ->count() > 2){
+                        $value->name_split = '중복인 이름이 있습니다.';
+                    }
+
+                    }else{
+                        $value->name_split = '';
+                    }
+                //
 
 
                 DB::table('step01s')->insert([
@@ -56,29 +89,34 @@ class Step01Controller extends Controller
                     'friendship' => $value->friendship,
                     'total' => $value->total,
                     'next_class' => $key % $_REQUEST['next_class'] + 1,
+                    'name_split' => $value->name_split,
                     'created_at' => now(),
                     'updated_at' => now()
                 ]);
             }
 
 
-                $new_data = DB::table('step01s')
-                    ->where('school_name', $_REQUEST['school_name'])
-                    ->orderBy('next_class', 'asc')
-                    ->orderBy('sex', 'desc')
-                    ->orderBy('name', 'asc')
-                    ->get();
-           
 
-              for ($i = 1; $i <= $_REQUEST['next_class']; $i++) {
+            $new_data = DB::table('step01s')
+                ->where('school_name', $_REQUEST['school_name'])
+                ->where('grade', $_REQUEST['current_grade'])
+                ->orderBy('next_class', 'asc')
+                ->orderBy('sex', 'desc')
+                ->orderBy('name', 'asc')
+                ->get();
 
-                $old_data[$i] = DB::table('step01s')
-                    ->where('next_class', $i)
-                    ->orderBy('current_class', 'asc')
-                    ->orderBy('sex', 'desc')
-                    ->orderBy('name', 'asc')
-                    ->get();
-            }
+
+
+        //    $name_repeat = (DB::table('step01s')
+        //         ->where('school_name', $request->school_name)
+        //         ->select('name_split')
+        //         ->havingRaw('count(name_split) > 2')
+        //         ->groupBy('name_split')
+        //         ->get('name_split'));
+        //     $name_repeat = array_map(function ($value) {
+        //         return $value->name_split;
+        //     }, $name_repeat->toArray());
+
 
 
 
@@ -90,12 +128,12 @@ class Step01Controller extends Controller
                 'new_data' => $new_data,
                 'new_class' => $_REQUEST['next_class'],
                 'data' => $new_data,
-                'old_data' => $old_data
+                'name_repeat' => json_encode($name_repeat, JSON_UNESCAPED_UNICODE)
             ]);
-        
-
 
     }
+
+
 
     public function store(Request $request)
     {

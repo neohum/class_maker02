@@ -20,5 +20,6 @@ class Step01 extends Model
         'friendship',
         'total',
         'next_class',
+        'name_split',
     ];
 }

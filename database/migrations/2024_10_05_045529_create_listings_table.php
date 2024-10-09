@@ -23,6 +23,8 @@ return new class extends Migration
             $table->integer('ability');
             $table->integer('friendship');
             $table->integer('total');
+            $table->integer('next_class');
+            $table->string('name_split');
             $table->timestamps();
         });
     }

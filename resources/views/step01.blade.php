@@ -6,7 +6,18 @@
 
 
 
-<a type="submit" href="{{ route('step02') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&next_class={{ $_REQUEST['next_class'] }}" class="btn btn-primary pull-left">편성결과 엑셀로 받기</a>
+<br>
+<br>
+<div class="container">
+    <a type="submit"
+        href="{{ route('store1') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&next_class={{ $_REQUEST['next_class'] }}"
+        class="btn btn-primary pull-left">편성결과 엑셀로 받기(내년반 기준)</a>
+
+    <a type="submit"
+        href="{{ route('store2') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&next_class={{ $_REQUEST['next_class'] }}"
+        class="btn btn-primary pull-left">편성결과 엑셀로 받기(현재반 기준)</a>
+</div>
+
 
 
 
@@ -33,6 +44,7 @@
                                             <th>이름</th>
                                             <th>성별</th>
                                             <th>새로운 반</th>
+                                            <th>이름 중복</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -46,6 +58,7 @@
                                             <td>{{ $row->name }}</td>
                                             <td>{{ $row->sex}}</td>
                                             <td>{{ $row->next_class }}</td>
+                                            <td>{{ $row->name_split }}</td>
                                         </tr>
                                         @endforeach
 

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('excel_data', function (Blueprint $table) {
+        Schema::create('step03s', function (Blueprint $table) {
             $table->id();
             $table->string('school_name');
             $table->integer('grade');
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('excel_data');
+        Schema::dropIfExists('step03s');
     }
 };

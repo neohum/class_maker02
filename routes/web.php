@@ -18,4 +18,5 @@ Route::post('/step01', [Step01Controller::class, 'store'])->name('step01.store')
 
 Route::get('/step01_store', [Step02Controller::class, 'index'])->name('step01_store');
 
-Route::get('/step02', [Step02Controller::class, 'index'])->name('step02');
+Route::get('/store1', [Step02Controller::class, 'store1'])->name('store1');
+Route::get('/store2', [Step02Controller::class, 'store2'])->name('store2');

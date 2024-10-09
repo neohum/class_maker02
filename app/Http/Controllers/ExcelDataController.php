@@ -53,6 +53,8 @@ public function index(Request $request)
                 'ability' => $row[6],
                 'friendship' => $row[7],
                 'total' => $row[5] + $row[6] + $row[7],
+                'next_class' => 0,
+                'name_split' => mb_substr($row[3], -2, 2),
             ]);
 
             }

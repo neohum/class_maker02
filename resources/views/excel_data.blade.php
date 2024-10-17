@@ -14,9 +14,9 @@
     <br>
     <br>
     <br>
-    <div id="content" class="container">
-        <div class="container">
-            <div class="container">
+    <div class="container d-flext justify-content-center">
+        <div class="container d-flext justify-content-center">
+            <div class="container d-flext justify-content-center">
                 <div class="col items-center">
                     <div id="flStackForm" class="col-lg-12 layout-spacing layout-top-spacing items-center">
                         <div class="statbox widget box box-shadow items-center">
@@ -25,6 +25,8 @@
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12 items-center">
                                         <h2 class="mt-4 item-center mx-4 p-y4">반편성 서비스</h2>
                                         <h4 class="mt-4">엑셀 파일을 한 번에 올려주세요</h4>
+                                        <h5 class="mt-4">"2. 엑셀 파일 올리기" 버튼을 누르기 전, 엑셀 파일이 모두 올라갔는지 꼭 확인하세요. 순서는 상관없습니다. </h5>
+                                        <h5>만약, 하나이상의 파일이 누락된 경우, 누락된 파일만 다시 올려주시면 됩니다.</h5>
                                     </div>
                                 </div>
                             </div>
@@ -39,8 +41,18 @@
                                 </form>
                                 <br>
                                 <br>
-                                <a type="submit" href="{{ route('step01') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&next_class={{ $_REQUEST['next_class'] }}" class="btn btn-primary pull-left">반편성
-                                    하기</a>
+                                <button type="submit" class="btn pull-left">1.학교 정보 입력하기</button>
+                                --->
+                                <a type="submit"
+                                    href="{{ route('step01') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&next_class={{ $_REQUEST['next_class'] }}"
+                                    class="btn btn-primary pull-left">2. 엑셀 파일 올리기</a>
+                                --->
+                                <button type="submit" class="btn  pull-left">3.이름 중복 및 데이터 확인하기->반편성하기</button>
+                                --->
+                                <button type="submit" class="btn pull-left">4.결과 확인 및 엑셀 다운로드</button>
+                                --->
+                                <button type="submit" class="btn pull-left">5.데이터 삭제하기</button>
+
                             </div>
                         </div>
                     </div>

@@ -9,7 +9,7 @@ class SchoolInfoController extends Controller
 {
     public function index()
     {
-        return view('index');
+        return view('start');
     }
 
     public function store(Request $request)

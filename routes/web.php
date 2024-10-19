@@ -9,7 +9,7 @@ use App\Http\Controllers\Step03Controller;
 use App\Http\Controllers\Step04Controller;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/start', [SchoolInfoController::class, 'index'])->name('start');

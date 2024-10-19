@@ -8,7 +8,11 @@ use App\Http\Controllers\Step02Controller;
 use App\Http\Controllers\Step03Controller;
 use App\Http\Controllers\Step04Controller;
 
-Route::get('/', [SchoolInfoController::class, 'index'])->name('index');
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/start', [SchoolInfoController::class, 'index'])->name('start');
 
 Route::post('/store', [SchoolInfoController::class, 'store'])->name('store');
 

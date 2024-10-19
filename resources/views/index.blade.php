@@ -77,7 +77,7 @@
                             <a class="mb-2 boxed-btn" href="./file/sample.zip"><span>반편성 샘플(테스트용)</span></a>
                             <br>
                             <br>
-                            <a class="btn btn-danger" href="http://neohum776.cafe24.com/public/index.php/start"><span>반편성 페이지로 가기</span></a>
+                            <a class="btn btn-danger" href="http://neohum776.cafe24.com/class_maker02/public/index.php/start"><span>반편성 페이지로 가기</span></a>
                         </div>
                     </div>
                 </div>

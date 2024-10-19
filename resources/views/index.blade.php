@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Ditan - Product Landing Page</title>
+    <title>반편성 서비스</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
@@ -77,7 +77,7 @@
                             <a class="mb-2 boxed-btn" href="./file/sample.zip"><span>반편성 샘플(테스트용)</span></a>
                             <br>
                             <br>
-                            <a class="btn btn-danger" href="http://neohum776.cafe24.com/class_maker02/public/index.php/start"><span>반편성 페이지로 가기</span></a>
+                            <a class="btn btn-danger" href="{{ url('/class_maker02/public/index.php/start') }}"><span>반편성 페이지로 가기</span></a>
                         </div>
                     </div>
                 </div>

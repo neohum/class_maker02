@@ -20,32 +20,59 @@ public function index(Request $request)
            switch ($case)
             {
                 case 1:
-                    $data = DB::table('excel_data')
+                    $data1 = DB::table('excel_data')
                         ->where('school_name', $_REQUEST['school_name'])
                         ->where('grade', $_REQUEST['current_grade'])
+                        ->where('sex', '남')
                         ->orderBy('total', 'desc')
+                        ->get();
+                    $data2 = DB::table('excel_data')
+                        ->where('school_name', $_REQUEST['school_name'])
+                        ->where('grade', $_REQUEST['current_grade'])
+                        ->where('sex', '여')
+                        ->orderBy('total', 'asc')
                         ->get();
 
                     break;
                 case 2:
-                    $data = DB::table('excel_data')
+                    $data1 = DB::table('excel_data')
                         ->where('school_name', $_REQUEST['school_name'])
                         ->where('grade', $_REQUEST['current_grade'])
+                        ->where( 'sex', '남')
+                        ->orderBy('atitude', 'asc')
+                        ->get();
+                    $data2 = DB::table('excel_data')
+                        ->where('school_name', $_REQUEST['school_name'])
+                        ->where('grade', $_REQUEST['current_grade'])
+                        ->where('sex', '여')
                         ->orderBy('atitude', 'desc')
                         ->get();
                     break;
                 case 3:
-                    $data = DB::table('excel_data')
+                    $data1 = DB::table('excel_data')
                         ->where('school_name', $_REQUEST['school_name'])
                         ->where('grade', $_REQUEST['current_grade'])
                         ->orderBy('ability', 'desc')
                         ->get();
-                    break;
-                case 4:
-                    $data = DB::table('excel_data')
+                    $data2 = DB::table('excel_data')
                         ->where('school_name', $_REQUEST['school_name'])
                         ->where('grade', $_REQUEST['current_grade'])
-                        ->orderBy('friendship', 'desc')
+                        ->where( 'sex', '여')
+                        ->orderBy('ability', 'desc')
+                        ->get();
+                    break;
+                case 4:
+                    $data1 = DB::table('excel_data')
+                        ->where('school_name', $_REQUEST['school_name'])
+                        ->where('grade', $_REQUEST['current_grade'])
+                        ->where('sex', '남')
+                        ->orderBy('friendship', 'asc')
+                        ->get();
+                    $data2 = DB::table('excel_data')
+                        ->where('school_name', $_REQUEST['school_name'])
+                        ->where('grade', $_REQUEST['current_grade'])
+                        ->where('sex', '여')
+                        ->orderBy('friendship', 'asc')
                         ->get();
                     break;
             }
@@ -53,14 +80,14 @@ public function index(Request $request)
 
 
 
-            foreach ($data as $key => $value) {
+            foreach ($data1 as $key => $value) {
 
 
                 if (DB::table('step01s')
                         ->where('school_name', $request->school_name)
                         ->where('grade', $value->grade)
                         ->select('name_split')
-                        ->havingRaw('count(name_split) > 2')
+                        ->havingRaw('count(name_split) > 1')
                         ->groupBy('name_split')
                         ->get('name_split')
                     ){
@@ -75,7 +102,6 @@ public function index(Request $request)
                     }else{
                         $value->name_split = '';
                     }
-                //
 
 
                 DB::table('step01s')->insert([
@@ -95,6 +121,44 @@ public function index(Request $request)
                     'updated_at' => now()
                 ]);
             }
+
+        foreach ($data2 as $key => $value) {
+             if (DB::table('step01s')
+                        ->where('school_name', $request->school_name)
+                        ->where('grade', $value->grade)
+                        ->select('name_split')
+                        ->havingRaw('count(name_split) > 1')
+                        ->groupBy('name_split')
+                        ->get('name_split')
+                    ){
+                     if(DB::table('excel_data')
+                    ->where('school_name', $request->school_name)
+                    ->where('grade', $value->grade)
+                    ->where('name_split', $value->name_split)
+                    ->count() > 1){
+                        $value->name_split = $value->name_split. '은(는) 중복입니다.';
+                    }
+
+                    }else{
+                        $value->name_split = '';
+                    }
+            DB::table('step01s')->insert([
+                'school_name' => $request->school_name,
+                'grade' => $value->grade,
+                'class' => $value->class,
+                'numbers' => $value->numbers,
+                'name' => $value->name,
+                'sex' => $value->sex,
+                'atitude' => $value->atitude,
+                'ability' => $value->ability,
+                'friendship' => $value->friendship,
+                'total' => $value->total,
+                'next_class' => $key % $_REQUEST['next_class'] + 1,
+                'name_split' => $value->name_split,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+        }
 
 
 

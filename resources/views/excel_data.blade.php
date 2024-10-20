@@ -17,18 +17,26 @@
     <div class="container d-flext justify-content-center">
         <div class="container d-flext justify-content-center">
             <div class="container d-flext justify-content-center">
-                <div class="col items-center">
-                    <div id="flStackForm" class="col-lg-12 layout-spacing layout-top-spacing items-center">
-                        <div class="statbox widget box box-shadow items-center">
+                <div class="items-center col">
+                    <div id="flStackForm" class="items-center col-lg-12 layout-spacing layout-top-spacing">
+                        <div class="items-center statbox widget box box-shadow">
                             <div class="widget-header itmes-center">
-                                <div class="row items-center">
-                                    <div class="col-xl-12 col-md-12 col-sm-12 col-12 items-center">
-                                        <h2 class="mt-4 item-center mx-4 p-y4">반편성 서비스</h2>
+                                <div class="items-center row">
+                                    <div class="items-center col-xl-12 col-md-12 col-sm-12 col-12">
+                                        <h2 class="mx-4 mt-4 item-center p-y4">반편성 서비스</h2>
                                         <h4 class="mt-4">엑셀 파일을 한 번에 올려주세요</h4>
                                         <h5 class="mt-4">"2. 엑셀 파일 올리기" 버튼을 누르기 전, 엑셀 파일이 모두 올라갔는지 꼭 확인하세요. 순서는 상관없습니다. </h5>
                                         <h5>만약, 하나이상의 파일이 누락된 경우, 누락된 파일만 다시 올려주시면 됩니다.</h5>
                                     </div>
                                 </div>
+                                @if ( $schoolinfo == 'true')
+                                <div class="alert alert-success" role="alert">
+                                    이전 파일이 남아있습니다. 아래 "데이터 삭제하기" 버튼을 누르면 이전 파일이 삭제되고 시작 페이지로 이동합니다.
+                                    <br>
+                                    <a href="{{ route('excel.delete') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&next_class={{ $_REQUEST['next_class'] }}" class="btn btn-danger">데이터 삭제하기</a>
+
+
+                                @endif
                             </div>
                             <div class=" widget-content-area">
 
@@ -47,7 +55,7 @@
                                     href="{{ route('step01') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&next_class={{ $_REQUEST['next_class'] }}"
                                     class="btn btn-primary pull-left">2. 엑셀 파일 올리기</a>
                                 --->
-                                <button type="submit" class="btn  pull-left">3.이름 중복 및 데이터 확인하기->반편성하기</button>
+                                <button type="submit" class="btn pull-left">3.이름 중복 및 데이터 확인하기->반편성하기</button>
                                 --->
                                 <button type="submit" class="btn pull-left">4.결과 확인 및 엑셀 다운로드</button>
                                 --->

@@ -26,7 +26,7 @@ class Step04Controller extends Controller
                 $step01->delete();
             }
         } catch (\Exception $e) {
-            return redirect()->route('index');
+            return redirect()->route('/');
         }
 
         try {
@@ -38,7 +38,7 @@ class Step04Controller extends Controller
                 $data->delete();
             }
         } catch (\Exception $e) {
-            return redirect()->route('index');
+            return redirect()->route('/');
         }
         try {
 
@@ -49,9 +49,9 @@ class Step04Controller extends Controller
                 $info->delete();
             }
         } catch (\Exception $e) {
-            return redirect()->route('index');
+            return redirect()->route('/');
         }
 
-        return redirect()->route('index');
+        return redirect()->away('http://neohum776.cafe24.com/class_maker02/public/');
     }
 }

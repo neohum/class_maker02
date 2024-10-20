@@ -7,14 +7,60 @@ use App\Models\ExcelData;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use PhpOffice\PhpSpreadsheet\IOFactory;
+use App\Models\SchoolInfo;
+use App\Models\Step01;
+
 
 class ExcelDataController extends Controller
 {
 public function index(Request $request)
     {
-
-        return view('excel_data');
+        if (DB::table('excel_data')->where('school_name', $_REQUEST['school_name'])->exists()) {
+            return view('excel_data', ['schoolinfo' => 'true', 'school_name' => $_REQUEST['school_name'], 'current_grade' => $_REQUEST['current_grade']]);
+        } else {
+            return view('excel_data', ['schoolinfo' => 'false', 'school_name' => $_REQUEST['school_name'], 'current_grade' => $_REQUEST['current_grade']]);
+        }
     }
+
+    public function delete(Request $request)
+    {
+        try {
+
+            $step01s = Step01::where('school_name', $_REQUEST['school_name'])
+                ->where('grade', $_REQUEST['current_grade'])
+                ->get();
+            foreach ($step01s as $step01) {
+                $step01->delete();
+            }
+        } catch (\Exception $e) {
+            return redirect()->route('excel.index', ['schoolinfo' => 'true', 'school_name' => $_REQUEST['school_name'], 'next_class' => $_REQUEST['next_class']]);
+        }
+
+        try {
+
+            $excel_datas = ExcelData::where('school_name', $_REQUEST['school_name'])
+                ->where('grade', $_REQUEST['current_grade'])
+                ->get();
+            foreach ($excel_datas as $data) {
+                $data->delete();
+            }
+        } catch (\Exception $e) {
+            return redirect()->route('excel.index', ['schoolinfo' => 'true', 'school_name' => $_REQUEST['school_name'], 'current_grade' => $_REQUEST['current_grade']]);
+        }
+        try {
+
+            $school_info = SchoolInfo::where('school_name', $_REQUEST['school_name'])
+                ->where('current_grade', $_REQUEST['current_grade'])
+                ->get();
+            foreach ($school_info as $info) {
+                $info->delete();
+            }
+        } catch (\Exception $e) {
+            return redirect()->route('excel.index', ['schoolinfo' => 'true', 'school_name' => $_REQUEST['school_name'], 'current_grade' => $_REQUEST['current_grade'], 'next_class' => $_REQUEST['next_class']]);
+        }
+        return redirect()->away('http://neohum776.cafe24.com/class_maker02/public/');
+    }
+
 
     public function store(Request $request)
 {

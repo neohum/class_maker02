@@ -13,11 +13,11 @@ Route::get('/', function () {
 });
 
 Route::get('/start', [SchoolInfoController::class, 'index'])->name('start');
-
 Route::post('/store', [SchoolInfoController::class, 'store'])->name('store');
 
-Route::get('/excel/upload', [ExcelDataController::class, 'index'])->name('excel.create');
-Route::post('/excel/upload', [ExcelDataController::class, 'store'])->name('excel.store');
+Route::get('/excel/index', [ExcelDataController::class, 'index'])->name('excel.index');
+Route::get('/excel/delete', [ExcelDataController::class, 'delete'])->name('excel.delete');
+Route::post('/excel/store', [ExcelDataController::class, 'store'])->name('excel.store');
 
 Route::get('/step01', [Step01Controller::class, 'index'])->name('step01');
 //Route::post('/step01', [Step01Controller::class, 'store'])->name('step01.store');

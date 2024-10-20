@@ -30,6 +30,6 @@ class SchoolInfoController extends Controller
             'next_class' => $request->next_class,
         ]);
 
-        return redirect()->route('excel.create', ['school_name' => $request->school_name, 'current_grade' => $request->current_grade, 'current_class' => $request->current_class, 'next_grade' => $request->next_grade, 'next_class' => $request->next_class]);
+        return redirect()->route('excel.index', ['school_name' => $request->school_name, 'current_grade' => $request->current_grade, 'current_class' => $request->current_class, 'next_grade' => $request->next_grade, 'next_class' => $request->next_class]);
     }
 }

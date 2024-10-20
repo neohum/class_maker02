@@ -115,7 +115,7 @@ public function index(Request $request)
                     'ability' => $value->ability,
                     'friendship' => $value->friendship,
                     'total' => $value->total,
-                    'next_class' => $key % $_REQUEST['next_class'] + 1,
+                    'next_class' => ($key % $_REQUEST['next_class']) + 1,
                     'name_split' => $value->name_split,
                     'created_at' => now(),
                     'updated_at' => now()
@@ -153,7 +153,7 @@ public function index(Request $request)
                 'ability' => $value->ability,
                 'friendship' => $value->friendship,
                 'total' => $value->total,
-                'next_class' => $key % $_REQUEST['next_class'] + 1,
+                'next_class' => ($key % $_REQUEST['next_class']) + 1,
                 'name_split' => $value->name_split,
                 'created_at' => now(),
                 'updated_at' => now()

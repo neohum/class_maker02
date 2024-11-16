@@ -13,21 +13,50 @@ class Step03Controller extends Controller
 {
     public function index(Request $request)
     {
+        $new_data = [];
         $new_data = DB::table('step01s')
                 ->where('school_name', $_REQUEST['school_name'])
                 ->where('grade', $_REQUEST['current_grade'])
-                ->orderBy('next_class', 'asc')
-                ->orderBy('sex', 'desc')
-                ->orderBy('name', 'asc')
                 ->get();
+
+        $counter = 0;
+        foreach ($new_data as $key => $value) {
+            if (count($new_data) == $key-2) {
+                break;
+            }else {
+
+            $table = 'class'.$new_data[$key]->class.'s';
+            DB::table($table)->insert([
+                'school_name' => $new_data[$key]->school_name,
+                'grade' => $new_data[$key]->grade,
+                'class' => $new_data[$key]->class,
+                'numbers' => $new_data[$key]->numbers,
+                'name' => $new_data[$key]->name,
+                'sex' => $new_data[$key]->sex,
+                'atitude' => $new_data[$key]->atitude,
+                'ability' => $new_data[$key]->ability,
+                'friendship' => $new_data[$key]->friendship,
+                'conditions' => $new_data[$key]->conditions,
+                'total' => $new_data[$key]->total,
+                'next_class' => $new_data[$key]->next_class,
+                'name_split' => $new_data[$key]->name_split,
+                'created_at' => now(),
+
+            ]);
+        }
+        }
+
 
         return view('step03', [
             'school_name' => $request->school_name,
             'current_grade' => $request->current_grade,
+            'current_class' => $request->current_class,
+            'next_grade' => $request->next_grade,
             'next_class' => $request->next_class,
             'data' => $new_data,
         ]);
     }
+
     public function store1(Request $request)
     {
 
@@ -61,8 +90,9 @@ class Step03Controller extends Controller
             'H' => array(15, 'ability','학습능력'),
             'I' => array(15, 'friendship','교우관계'),
             'J' => array(15, 'total','총점'),
-            'K' => array(15, 'next_class','반편성결과'),
-            'L' => array(15, 'name_split','중복 이름'),
+            'K' => array(15, 'conditions','분리배정'),
+            'L' => array(15, 'next_class','반편성결과'),
+            'M' => array(15, 'name_split','중복 이름'),
         );
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
@@ -79,21 +109,21 @@ class Step03Controller extends Controller
         }
 
 
-        $sheet->getStyle('A1:L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('FFA0A0A0');
-        $sheet->getStyle('A1:L1')->getAlignment()->setWrapText(true);
-        $sheet->getStyle('A1:L1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle('A1:L1')->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
-        $sheet->getStyle('A1:L1')->getFont()->getColor()->setARGB('FFFFFFFF');
-        $sheet->getStyle('A1:L1')->getFont()->setBold(true);
-        $sheet->getStyle('A1:L1')->getFont()->setSize(12);
-        $sheet->getStyle('A1:L1')->getFont()->setName('맑은 고딕');
-        $sheet->getStyle('A1:L1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle('A1:L1')->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
-        $sheet->getStyle('A1:L1')->getAlignment()->setWrapText(true);
-        $sheet->getStyle('A1:L1')->getAlignment()->setShrinkToFit(true);
-        $sheet->getStyle('A1:L1')->getAlignment()->setTextRotation(90);
-        $sheet->getStyle('A1:L1')->getAlignment()->setIndent(1);
-        $sheet->getStyle('A1:L1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('A1:M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('FFA0A0A0');
+        $sheet->getStyle('A1:M1')->getAlignment()->setWrapText(true);
+        $sheet->getStyle('A1:M1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('A1:M1')->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
+        $sheet->getStyle('A1:M1')->getFont()->getColor()->setARGB('FFFFFFFF');
+        $sheet->getStyle('A1:M1')->getFont()->setBold(true);
+        $sheet->getStyle('A1:M1')->getFont()->setSize(12);
+        $sheet->getStyle('A1:M1')->getFont()->setName('맑은 고딕');
+        $sheet->getStyle('A1:M1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('A1:M1')->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
+        $sheet->getStyle('A1:M1')->getAlignment()->setWrapText(true);
+        $sheet->getStyle('A1:M1')->getAlignment()->setShrinkToFit(true);
+        $sheet->getStyle('A1:M1')->getAlignment()->setTextRotation(90);
+        $sheet->getStyle('A1:M1')->getAlignment()->setIndent(1);
+        $sheet->getStyle('A1:M1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
 
 
@@ -122,6 +152,8 @@ class Step03Controller extends Controller
     return view('step03', [
         'school_name' => $request->school_name,
         'current_grade' => $request->current_grade,
+        'current_class' => $request->current_class,
+        'next_grade' => $request->next_grade,
         'next_class' => $request->next_class,
     ]);
   }
@@ -160,8 +192,9 @@ class Step03Controller extends Controller
             'H' => array(15, 'ability','학습능력'),
             'I' => array(15, 'friendship','교우관계'),
             'J' => array(15, 'total','총점'),
-            'K' => array(15, 'next_class','반편성결과'),
-            'L' => array(15, 'name_split','중복 이름'),
+            'K' => array(15, 'conditions','분리배정'),
+            'L' => array(15, 'next_class','반편성결과'),
+            'M' => array(15, 'name_split','중복 이름'),
         );
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
@@ -178,21 +211,21 @@ class Step03Controller extends Controller
         }
 
 
-        $sheet->getStyle('A1:L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('FFA0A0A0');
-        $sheet->getStyle('A1:L1')->getAlignment()->setWrapText(true);
-        $sheet->getStyle('A1:L1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle('A1:L1')->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
-        $sheet->getStyle('A1:L1')->getFont()->getColor()->setARGB('FFFFFFFF');
-        $sheet->getStyle('A1:L1')->getFont()->setBold(true);
-        $sheet->getStyle('A1:L1')->getFont()->setSize(12);
-        $sheet->getStyle('A1:L1')->getFont()->setName('맑은 고딕');
-        $sheet->getStyle('A1:L1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle('A1:L1')->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
-        $sheet->getStyle('A1:L1')->getAlignment()->setWrapText(true);
-        $sheet->getStyle('A1:L1')->getAlignment()->setShrinkToFit(true);
-        $sheet->getStyle('A1:L1')->getAlignment()->setTextRotation(90);
-        $sheet->getStyle('A1:L1')->getAlignment()->setIndent(1);
-        $sheet->getStyle('A1:L1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('A1:M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('FFA0A0A0');
+        $sheet->getStyle('A1:M1')->getAlignment()->setWrapText(true);
+        $sheet->getStyle('A1:M1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('A1:M1')->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
+        $sheet->getStyle('A1:M1')->getFont()->getColor()->setARGB('FFFFFFFF');
+        $sheet->getStyle('A1:M1')->getFont()->setBold(true);
+        $sheet->getStyle('A1:M1')->getFont()->setSize(12);
+        $sheet->getStyle('A1:M1')->getFont()->setName('맑은 고딕');
+        $sheet->getStyle('A1:M1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('A1:M1')->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
+        $sheet->getStyle('A1:M1')->getAlignment()->setWrapText(true);
+        $sheet->getStyle('A1:M1')->getAlignment()->setShrinkToFit(true);
+        $sheet->getStyle('A1:M1')->getAlignment()->setTextRotation(90);
+        $sheet->getStyle('A1:M1')->getAlignment()->setIndent(1);
+        $sheet->getStyle('A1:M1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
 
 

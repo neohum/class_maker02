@@ -11,49 +11,42 @@ class Step01Controller extends Controller
 {
     public function index(Request $request)
     {
-        $datas = DB::table('step01s')
-            ->where('school_name', $request->school_name)
-            ->where('grade', $request->current_grade);
 
-
-            foreach ($datas as $key => $value) {
-
-
-                if (DB::table('excel_data')
+            $data = [];
+                for($i = 1; $i <= $request->current_class; $i++){
+                    $data[$i] = DB::table('excel_data')
                         ->where('school_name', $request->school_name)
-                        ->where('grade', $request->grade)
-                        ->select('name_split')
-                        ->havingRaw('count(name_split) > 2')
-                        ->groupBy('name_split')
-                        ->get('name_split')
-                    ){
-                     if(DB::table('excel_data')
-                    ->where('school_name', $request->school_name)
-                    ->where('grade', $request->grade)
-                    ->where('name_split', $request->name_split)
-                    ->count() > 1){
-                        $value->name_split = $request->name_split. '은 중복입니다.';
-                    }
+                        ->where('grade', $request->current_grade)
+                        ->where('class', $i)
+                        ->get()
+                        ->count();
+                }
 
-                    }else{
-                        $value->name_split = '';
-                    }
 
-                    $new_data = DB::table('excel_data')
-                        ->where('school_name', $_REQUEST['school_name'])
-                        ->where('grade', $_REQUEST['current_grade'])
-                        ->orderBy('class', 'asc')
-                        ->orderBy('numbers', 'asc')
-                        ->get();
-                //
-            }
+
+
+
+
+            $new_data = DB::table('excel_data')
+                ->where('school_name', $_REQUEST['school_name'])
+                ->where('grade', $_REQUEST['current_grade'])
+                ->orderBy('class', 'asc')
+                ->orderBy('numbers', 'asc')
+                ->get();
+
+
             return view('step01', [
                 'data' => $new_data,
-
+                'school_info' => $data,
                 'school_name' => $request->school_name,
+                'current_grade' => $request->current_grade,
+                'current_class' => $request->current_class,
+                'next_grade' => $request->next_grade,
+                'next_class' => $request->next_class,
+                
             ]);
-        }
 
+    }
 
 }
 

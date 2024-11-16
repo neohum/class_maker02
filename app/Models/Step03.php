@@ -18,6 +18,7 @@ class Step03 extends Model
         'atitude',
         'ability',
         'friendship',
+        'conditions',
         'total',
         'next_class',
         'name_split',

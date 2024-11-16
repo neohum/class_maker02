@@ -25,26 +25,33 @@
     <div class="container d-flext justify-content-center">
         <div class="container">
             <div class="container">
-                <div class="col items-center">
-                    <button type="submit" class="btn  pull-left">1.학교 정보 입력하기</button>
+                <div class="items-center col">
+                    <button type="submit" class="btn pull-left">1.학교 정보 입력하기</button>
                     --->
+                    <br>
+                    <br>
                     <button type="submit" class="btn pull-left">2.엑셀 파일 올리기</button>
                     --->
-
-                    <button class="btn pull-left">3. 이름 중복 및 데이터 확인하기->반편성하기</button>
+                    <br>
+                    <br>
+                    <button class="btn pull-left">3. 중복된 이름 찾기(클릭하세요)</button>
                     --->
+                    <br>
+                    <br>
                     <a type="submit"
-                        href="{{ route('step03') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&next_class={{ $_REQUEST['next_class'] }}"
-                        class="btn btn-primary pull-left">4.결과 확인 및 엑셀 다운로드</a>
+                        href="{{ route('step03') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&current_class={{ $_REQUEST['current_class'] }}&next_grade={{ $_REQUEST['next_grade'] }}&next_class={{ $_REQUEST['next_class'] }}"
+                        class="btn btn-primary pull-left">4.반편성 1과정(클릭하기)</a>
 
                     --->
-                    <button type="submit" class="btn pull-left">5.데이터 삭제하기</button>
-                    <div id="flStackForm" class="col-lg-12 layout-spacing layout-top-spacing items-center">
-                        <div class="statbox widget box box-shadow items-center">
+                    <br>
+                    <br>
+                    <button type="submit" class="btn pull-left">5.반편성 과정 2</button>
+                    <div id="flStackForm" class="items-center col-lg-12 layout-spacing layout-top-spacing">
+                        <div class="items-center statbox widget box box-shadow">
                             <div class="widget-header itmes-center">
-                                <div class="row items-center">
-                                    <div class="col-xl-12 col-md-12 col-sm-12 col-12 items-center">
-                                        <h2 class="mt-4 item-center mx-4 p-y4">{{ $school_name }} 의 데이터 입력 결과</h2>
+                                <div class="items-center row">
+                                    <div class="items-center col-xl-12 col-md-12 col-sm-12 col-12">
+                                        <h2 class="mx-4 mt-4 item-center p-y4">{{ $school_name }} 의 데이터 입력 결과</h2>
                                     </div>
                                 </div>
                             </div>

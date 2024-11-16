@@ -19,6 +19,7 @@ class Listings extends Model
         'atitude',
         'ability',
         'friendship',
+        'condition',
         'total',
     ];
 }

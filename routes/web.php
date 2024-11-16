@@ -5,6 +5,8 @@ use App\Http\Controllers\SchoolInfoController;
 use App\Http\Controllers\ExcelDataController;
 use App\Http\Controllers\Step01Controller;
 use App\Http\Controllers\Step02Controller;
+use App\Http\Controllers\Step03_01_Controller;
+use App\Http\Controllers\Step03_02_Controller;
 use App\Http\Controllers\Step03Controller;
 use App\Http\Controllers\Step04Controller;
 
@@ -26,7 +28,11 @@ Route::get('/step02', [Step02Controller::class, 'index'])->name('step02');
 
 Route::get('/step03', [Step03Controller::class, 'index'])->name('step03');
 
-Route::get('/last', [Step04Controller::class, 'index'])->name('last');
+Route::get('/step03_01', [Step03_01_Controller::class, 'index'])->name('step03_01');
+
+Route::get('/step03_02', [Step03_02_Controller::class, 'index'])->name('step03_02');
+
+Route::get('/step04', [Step04Controller::class, 'index'])->name('step04');
 Route::get('/step04', [Step04Controller::class, 'delete'])->name('step04.delete');
 
 Route::get('/store1', [Step03Controller::class, 'store1'])->name('store1');

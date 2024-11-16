@@ -28,14 +28,21 @@
                 <div class="items-center col">
                     <button type="submit" class="btn pull-left">1.학교 정보 입력하기</button>
                     --->
+                    <br>
+                    <br>
                     <button type="submit" class="btn pull-left">2.엑셀 파일 올리기</button>
                     --->
+                    <br>
+                    <br>
                     <button class="btn pull-left">3. 이름 중복 및 데이터 확인하기->반편성하기</button>
                     --->
-
-                    <button type="submit" class="btn pull-left">4.결과 확인 및 엑셀 다운로드</button>
+                    <br>
+                    <br>
+                    <button type="submit" class="btn pull-left">4.반편성 과정 1</button>
                     --->
-                    <button class="btn btn-primary pull-left">5.데이터 삭제하기</button>
+                    <br>
+                    <br>
+                    <button class="btn btn-primary pull-left">5.반편성 과정 2</button>
                     <div id="flStackForm" class="items-center col-lg-12 layout-spacing layout-top-spacing">
                         <div class="items-center statbox widget box box-shadow">
                             <div class="widget-header itmes-center">

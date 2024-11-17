@@ -65,7 +65,7 @@
                             <div class="widget-header itmes-center">
                                 <div class="items-center row">
                                     <div class="items-center col-xl-12 col-md-12 col-sm-12 col-12">
-                                        <h2 class="mx-4 mt-4 item-center p-y4">{{ $school_name }} 의 반편성 과정 2(선 배치 학생 분배)
+                                        <h2 class="mx-4 mt-4 item-center p-y4">{{ $school_name }} 의 반편성 과정 4
                                         </h2>
                                         <div class="container">
                                             {{-- <a type="submit"

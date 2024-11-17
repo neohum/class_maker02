@@ -17,7 +17,59 @@ class Step03_02_Controller extends Controller
 
         function insert_new_class($data, $new_class, $rotate, $i)
         {
+            $total = DB::table('step01s')
+                ->where('school_name', $data[$i]->school_name)
+                ->where('grade', $data[$i]->grade)
+                ->get();
+            $counting_each_class = ceil(($total->count())/$_REQUEST['next_class']);
             $table = 'nclass' . ($rotate + 1) . 's';
+            $counting_each_class2 = DB::table($table)
+                                        ->where('school_name', $data[$i]->school_name)
+                                        ->where('grade', $data[$i]->grade)
+                                        ->get();
+
+
+
+            if (count($counting_each_class2) < $counting_each_class-2) {
+                $table = 'nclass' . ($rotate + 1) . 's';
+                DB::table($table)
+                    ->insert([
+                            'school_name' => $data[$i]->school_name,
+                            'grade' => $data[$i]->grade,
+                            'class' => $data[$i]->class,
+                            'numbers' => $data[$i]->numbers,
+                            'name' => $data[$i]->name,
+                            'sex' => $data[$i]->sex,
+                            'atitude' => $data[$i]->atitude,
+                            'ability' => $data[$i]->ability,
+                            'friendship' => $data[$i]->friendship,
+                            'conditions' => $data[$i]->conditions,
+                            'total' => $data[$i]->total,
+                            'next_class' => $new_class[$rotate],
+                            'name_split' => $data[$i]->name_split,
+                            'created_at' => now(),
+                        ]);
+                } else if($_REQUEST['next_class'] < $rotate + 1) {
+                    $table = 'nclass' . ($rotate + 2) . 's';
+                    DB::table($table)
+                        ->insert([
+                            'school_name' => $data[$i]->school_name,
+                            'grade' => $data[$i]->grade,
+                            'class' => $data[$i]->class,
+                            'numbers' => $data[$i]->numbers,
+                            'name' => $data[$i]->name,
+                            'sex' => $data[$i]->sex,
+                            'atitude' => $data[$i]->atitude,
+                            'ability' => $data[$i]->ability,
+                            'friendship' => $data[$i]->friendship,
+                            'conditions' => $data[$i]->conditions,
+                            'total' => $data[$i]->total,
+                            'next_class' => $new_class[$rotate],
+                            'name_split' => $data[$i]->name_split,
+                            'created_at' => now(),
+                        ]);
+                    } else {
+                        $table = 'nclass' . ($rotate + 2) . 's';
                         DB::table($table)
                             ->insert([
                                 'school_name' => $data[$i]->school_name,
@@ -35,6 +87,8 @@ class Step03_02_Controller extends Controller
                                 'name_split' => $data[$i]->name_split,
                                 'created_at' => now(),
                             ]);
+                 }
+
         }
 
          function separate ($data, $new_class)

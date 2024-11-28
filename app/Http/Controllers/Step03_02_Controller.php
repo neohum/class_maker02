@@ -19,7 +19,7 @@ class Step03_02_Controller extends Controller
         {
 
             $table = 'nclass' . ($rotate + 1) . 's';
-                    $test = isset($data[$i]) ? "" : "null";
+
                     DB::table($table)
                     ->insert([
                         'school_name' => $data[$i]->school_name,
@@ -44,125 +44,228 @@ class Step03_02_Controller extends Controller
 
         function separate($data, $new_class)
         {
-
-            for ($i = 0; $i < count($data); $i++) {
-
-
+            if ($_REQUEST['next_class'] == 2) {
+                for ($i = 0; $i < count($data); $i++) {
                     $rotate = $i % $_REQUEST['next_class'];
+                    array_reduce($data, mix($rotate));
+                    insert_new_class($data, $new_class, $rotate, $i);
+                }
+            }else if($_REQUEST['next_class'] == 3){
+                for ($i = 0; $i < count($data); $i++) {
+                    $rotate = $i % $_REQUEST['next_class'];
+                    insert_new_class($data, $new_class, $rotate, $i);
+                }
+            }else if($_REQUEST['next_class'] == 4){
+                for ($i = 0; $i < count($data); $i++) {
+                    $rotate = $i % $_REQUEST['next_class'];
+                    insert_new_class($data, $new_class, $rotate, $i);
+                }
+            }else if($_REQUEST['next_class'] == 5){
+                for ($i = 0; $i < count($data); $i++) {
+                    $rotate = $i % $_REQUEST['next_class'];
+                    insert_new_class($data, $new_class, $rotate, $i);
+                }
+            }else if($_REQUEST['next_class'] == 6){
+                for ($i = 0; $i < count($data); $i++) {
+                    $rotate = $i % $_REQUEST['next_class'];
+                    insert_new_class($data, $new_class, $rotate, $i);
+                }
+            }else if($_REQUEST['next_class'] == 7){
+                for ($i = 0; $i < count($data); $i++) {
+                    $rotate = $i % $_REQUEST['next_class'];
+                    insert_new_class($data, $new_class, $rotate, $i);
+                }
+            }else if($_REQUEST['next_class'] == 8){
+                $j = 0;
+                for ($i = 0; $i < count($data); $i++) {
 
-
-                    switch ($rotate) {
-                        case 0:
-
-                            insert_new_class($data, $new_class, $rotate, $i);
-
-                            break;
-
-
-                        case 1:
-                            insert_new_class($data, $new_class, $rotate+1, $i);
-
-                            break;
-
-                        case 2:
-                            insert_new_class($data, $new_class, $rotate, $i);
-
-                            break;
-
-                        case 3:
-                            insert_new_class($data, $new_class, $rotate, $i);
-                            break;
-
-                        case 4:
-                            insert_new_class($data, $new_class, $rotate, $i);
-
-                            break;
-
-                        case 5:
-                            insert_new_class($data, $new_class, $rotate, $i);
-
-                            break;
-
-                        case 6:
-                            insert_new_class($data, $new_class, $rotate, $i);
-
-                            break;
-
-                        case 7:
-                            insert_new_class($data, $new_class, $rotate, $i);
-
-                            break;
-
-                        case 8:
-                            insert_new_class($data, $new_class, $rotate, $i);
-                            break;
-
-                        case 9:
-                            insert_new_class($data, $new_class, $rotate, $i);
-
-                            break;
-
-                        case 10:
-                            insert_new_class($data, $new_class, $rotate, $i);
-
-                            break;
-
-                        case 11:
-                            insert_new_class($data, $new_class, $rotate, $i);
-
-                            break;
-
-                        case 12:
-                            insert_new_class($data, $new_class, $rotate, $i);
-
-                            break;
-
-                        case 13:
-                            insert_new_class($data, $new_class, $rotate, $i);
-
-                            break;
-
-                        case 14:
-                            insert_new_class($data, $new_class, $rotate, $i);
-
-                            break;
-
-                        case 15:
-                            insert_new_class($data, $new_class, $rotate, $i);
-
-                            break;
-
-                        case 16:
-                            insert_new_class($data, $new_class, $rotate, $i);
-                            break;
-
-                        case 17:
-                            insert_new_class($data, $new_class, $rotate, $i);
-
-                            break;
-
-                        case 18:
-                            insert_new_class($data, $new_class, $rotate, $i);
-
-                            break;
-
-                        case 19:
-                            insert_new_class($data, $new_class, $rotate, $i);
-
-                            break;
-
-                        case 20:
-                            insert_new_class($data, $new_class, $rotate, $i);
-
-                            break;
-
-
-
-
-                    }
-
-
+                    $rotate = ($i) % $_REQUEST['next_class'];
+                    insert_new_class($data, $new_class, $rotate, $j);
+                    $j++;
+                }
+            }else if($_REQUEST['next_class'] == 9){
+                for ($i = 0; $i < count($data); $i++) {
+                    $rotate = $i % $_REQUEST['next_class'];
+                    insert_new_class($data, $new_class, $rotate, $i);
+                }
+            }else if($_REQUEST['next_class'] == 10){
+                for ($i = 0; $i < count($data); $i++) {
+                    $rotate = $i % $_REQUEST['next_class'];
+                    insert_new_class($data, $new_class, $rotate, $i);
+                }
+            }else if($_REQUEST['next_class'] == 11){
+                for ($i = 0; $i < count($data); $i++) {
+                    $rotate = $i % $_REQUEST['next_class'];
+                    insert_new_class($data, $new_class, $rotate, $i);
+                }
+            }else if($_REQUEST['next_class'] == 12){
+                for ($i = 0; $i < count($data); $i++) {
+                    $rotate = $i % $_REQUEST['next_class'];
+                    insert_new_class($data, $new_class, $rotate, $i);
+                }
+            }else if($_REQUEST['next_class'] == 13){
+                for ($i = 0; $i < count($data); $i++) {
+                    $rotate = $i % $_REQUEST['next_class'];
+                    insert_new_class($data, $new_class, $rotate, $i);
+                }
+            }else if($_REQUEST['next_class'] == 14){
+                for ($i = 0; $i < count($data); $i++) {
+                    $rotate = $i % $_REQUEST['next_class'];
+                    insert_new_class($data, $new_class, $rotate, $i);
+                }
+            }else if($_REQUEST['next_class'] == 15){
+                for ($i = 0; $i < count($data); $i++) {
+                    $rotate = $i % $_REQUEST['next_class'];
+                    insert_new_class($data, $new_class, $rotate, $i);
+                }
+            }else if($_REQUEST['next_class'] == 16){
+                for ($i = 0; $i < count($data); $i++) {
+                    $rotate = $i % $_REQUEST['next_class'];
+                    insert_new_class($data, $new_class, $rotate, $i);
+                }
+            }else if($_REQUEST['next_class'] == 17){
+                for ($i = 0; $i < count($data); $i++) {
+                    $rotate = $i % $_REQUEST['next_class'];
+                    insert_new_class($data, $new_class, $rotate, $i);
+                }
+            }else if($_REQUEST['next_class'] == 18){
+                for ($i = 0; $i < count($data); $i++) {
+                    $rotate = $i % $_REQUEST['next_class'];
+                    insert_new_class($data, $new_class, $rotate, $i);
+                }
             }
+            else if($_REQUEST['next_class'] == 19){
+                for ($i = 0; $i < count($data); $i++) {
+                    $rotate = $i % $_REQUEST['next_class'];
+                    insert_new_class($data, $new_class, $rotate, $i);
+                }
+            }
+            else if($_REQUEST['next_class'] == 20){
+                for ($i = 0; $i < count($data); $i++) {
+                    $rotate = $i % $_REQUEST['next_class'];
+                    insert_new_class($data, $new_class, $rotate, $i);
+                }
+            }
+
+
+            // for ($i = 0; $i < count($data); $i++) {
+
+
+            //         $rotate = $i % $_REQUEST['next_class'];
+
+
+            //         switch ($rotate) {
+            //             case 0:
+
+            //                 insert_new_class($data, $new_class, $rotate, $i);
+
+            //                 break;
+
+
+            //             case 1:
+            //                 insert_new_class($data, $new_class, $rotate, $i);
+
+            //                 break;
+
+            //             case 2:
+            //                 insert_new_class($data, $new_class, $rotate, $i);
+
+            //                 break;
+
+            //             case 3:
+            //                 insert_new_class($data, $new_class, $rotate, $i);
+            //                 break;
+
+            //             case 4:
+            //                 insert_new_class($data, $new_class, $rotate, $i);
+
+            //                 break;
+
+            //             case 5:
+            //                 insert_new_class($data, $new_class, $rotate, $i);
+
+            //                 break;
+
+            //             case 6:
+            //                 insert_new_class($data, $new_class, $rotate, $i);
+
+            //                 break;
+
+            //             case 7:
+            //                 insert_new_class($data, $new_class, $rotate, $i);
+
+            //                 break;
+
+            //             case 8:
+            //                 insert_new_class($data, $new_class, $rotate, $i);
+            //                 break;
+
+            //             case 9:
+            //                 insert_new_class($data, $new_class, $rotate, $i);
+
+            //                 break;
+
+            //             case 10:
+            //                 insert_new_class($data, $new_class, $rotate, $i);
+
+            //                 break;
+
+            //             case 11:
+            //                 insert_new_class($data, $new_class, $rotate, $i);
+
+            //                 break;
+
+            //             case 12:
+            //                 insert_new_class($data, $new_class, $rotate, $i);
+
+            //                 break;
+
+            //             case 13:
+            //                 insert_new_class($data, $new_class, $rotate, $i);
+
+            //                 break;
+
+            //             case 14:
+            //                 insert_new_class($data, $new_class, $rotate, $i);
+
+            //                 break;
+
+            //             case 15:
+            //                 insert_new_class($data, $new_class, $rotate, $i);
+
+            //                 break;
+
+            //             case 16:
+            //                 insert_new_class($data, $new_class, $rotate, $i);
+            //                 break;
+
+            //             case 17:
+            //                 insert_new_class($data, $new_class, $rotate, $i);
+
+            //                 break;
+
+            //             case 18:
+            //                 insert_new_class($data, $new_class, $rotate, $i);
+
+            //                 break;
+
+            //             case 19:
+            //                 insert_new_class($data, $new_class, $rotate, $i);
+
+            //                 break;
+
+            //             case 20:
+            //                 insert_new_class($data, $new_class, $rotate, $i);
+
+            //                 break;
+
+
+
+
+            //         }
+
+
+            // }
         }
         for ($i = 0; $i < $request->next_class; $i++) {
             $table = 'class' . ($i + 1) . 's';

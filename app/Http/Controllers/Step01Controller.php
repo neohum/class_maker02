@@ -43,7 +43,7 @@ class Step01Controller extends Controller
                 'current_class' => $request->current_class,
                 'next_grade' => $request->next_grade,
                 'next_class' => $request->next_class,
-                
+
             ]);
 
     }

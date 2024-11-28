@@ -132,9 +132,9 @@ class Step03Controller extends Controller
                 $value = str_replace('"', '', $val[1]);
             // dd($new_data[$i]);
 	        $sheet->setCellValue($key.($i+2), $new_data[$i]->$value);
-	    }
+	        }
 
-	}
+    }
         $filename = '반배정결과(내년반 기준)';
 
 	header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
@@ -156,7 +156,7 @@ class Step03Controller extends Controller
         'next_grade' => $request->next_grade,
         'next_class' => $request->next_class,
     ]);
-  }
+    }
 
   //
     public function store2(Request $request)

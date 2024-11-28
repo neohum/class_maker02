@@ -44,7 +44,7 @@
                     <br>
                     <br>
                     <a type="submit"
-                        href="{{ route('step03_01') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&current_class={{ $_REQUEST['current_class'] }}&next_grade={{ $_REQUEST['next_grade'] }}&next_class={{ $_REQUEST['next_class'] }}"
+                        href="{{ route('step03_02') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&current_class={{ $_REQUEST['current_class'] }}&next_grade={{ $_REQUEST['next_grade'] }}&next_class={{ $_REQUEST['next_class'] }}"
                         class="btn btn-primary pull-left">5.반편성 과정 2</a>
                     --->
                     <br>

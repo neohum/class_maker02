@@ -10,6 +10,17 @@
 
     <br>
     <br>
+    <!--
+<div class="container">
+    <a type="submit"
+        href="{{ route('store1') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&next_class={{ $_REQUEST['next_class'] }}"
+        class="btn btn-primary pull-left">편성결과 엑셀로 받기(내년반 기준)</a>
+
+    <a type="submit"
+        href="{{ route('store2') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&next_class={{ $_REQUEST['next_class'] }}"
+        class="btn btn-primary pull-left">편성결과 엑셀로 받기(현재반 기준)</a>
+</div>
+-->
 
 
 
@@ -41,14 +52,13 @@
                     <br>
                     <br>
                     <a type="submit"
-                    href="{{ route('step03_03') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&current_class={{ $_REQUEST['current_class'] }}&next_grade={{ $_REQUEST['next_grade'] }}&next_class={{ $_REQUEST['next_class'] }}"
-                     class="btn btn-primary pull-left">6.반편성 과정 3</a>
+                    class="btn pull-left">6.반편성 과정 3</a>
                     --->
                     <br>
                     <br>
                     <a type="submit"
-
-                        class="btn pull-left">7.반편성 과정 4</a>
+                        href="{{ route('step03_03') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&current_class={{ $_REQUEST['current_class'] }}&next_grade{{ $_REQUEST['next_grade'] }}&next_class={{ $_REQUEST['next_class'] }}"
+                        class="btn btn-primary pull-left">7.반편성 과정 4</a>
                     <div id="flStackForm" class="items-center col-lg-12 layout-spacing layout-top-spacing">
                         <div class="items-center statbox widget box box-shadow">
                             <div class="widget-header itmes-center">

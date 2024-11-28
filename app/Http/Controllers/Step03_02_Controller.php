@@ -17,310 +17,249 @@ class Step03_02_Controller extends Controller
 
         function insert_new_class($data, $new_class, $rotate, $i)
         {
-            $total = DB::table('step01s')
-                ->where('school_name', $data[$i]->school_name)
-                ->where('grade', $data[$i]->grade)
-                ->get();
-            $counting_each_class = ceil(($total->count())/$_REQUEST['next_class']);
+
             $table = 'nclass' . ($rotate + 1) . 's';
-            $counting_each_class2 = DB::table($table)
-                                        ->where('school_name', $data[$i]->school_name)
-                                        ->where('grade', $data[$i]->grade)
-                                        ->get();
-
-
-
-            if (count($counting_each_class2) < $counting_each_class-2) {
-                $table = 'nclass' . ($rotate + 1) . 's';
-                DB::table($table)
-                    ->insert([
-                            'school_name' => $data[$i]->school_name,
-                            'grade' => $data[$i]->grade,
-                            'class' => $data[$i]->class,
-                            'numbers' => $data[$i]->numbers,
-                            'name' => $data[$i]->name,
-                            'sex' => $data[$i]->sex,
-                            'atitude' => $data[$i]->atitude,
-                            'ability' => $data[$i]->ability,
-                            'friendship' => $data[$i]->friendship,
-                            'conditions' => $data[$i]->conditions,
-                            'total' => $data[$i]->total,
-                            'next_class' => $new_class[$rotate],
-                            'name_split' => $data[$i]->name_split,
-                            'created_at' => now(),
-                        ]);
-                } else if($_REQUEST['next_class'] < $rotate + 1) {
-                    $table = 'nclass' . ($rotate + 2) . 's';
+                    $test = isset($data[$i]) ? "" : "null";
                     DB::table($table)
-                        ->insert([
-                            'school_name' => $data[$i]->school_name,
-                            'grade' => $data[$i]->grade,
-                            'class' => $data[$i]->class,
-                            'numbers' => $data[$i]->numbers,
-                            'name' => $data[$i]->name,
-                            'sex' => $data[$i]->sex,
-                            'atitude' => $data[$i]->atitude,
-                            'ability' => $data[$i]->ability,
-                            'friendship' => $data[$i]->friendship,
-                            'conditions' => $data[$i]->conditions,
-                            'total' => $data[$i]->total,
-                            'next_class' => $new_class[$rotate],
-                            'name_split' => $data[$i]->name_split,
-                            'created_at' => now(),
-                        ]);
-                    } else {
-                        $table = 'nclass' . ($rotate + 2) . 's';
-                        DB::table($table)
-                            ->insert([
-                                'school_name' => $data[$i]->school_name,
-                                'grade' => $data[$i]->grade,
-                                'class' => $data[$i]->class,
-                                'numbers' => $data[$i]->numbers,
-                                'name' => $data[$i]->name,
-                                'sex' => $data[$i]->sex,
-                                'atitude' => $data[$i]->atitude,
-                                'ability' => $data[$i]->ability,
-                                'friendship' => $data[$i]->friendship,
-                                'conditions' => $data[$i]->conditions,
-                                'total' => $data[$i]->total,
-                                'next_class' => $new_class[$rotate],
-                                'name_split' => $data[$i]->name_split,
-                                'created_at' => now(),
-                            ]);
-                 }
+                    ->insert([
+                        'school_name' => $data[$i]->school_name,
+                        'grade' => $data[$i]->grade,
+                        'class' => $data[$i]->class,
+                        'numbers' => $data[$i]->numbers,
+                        'name' => $data[$i]->name,
+                        'sex' => $data[$i]->sex,
+                        'atitude' => $data[$i]->atitude,
+                        'ability' => $data[$i]->ability,
+                        'friendship' => $data[$i]->friendship,
+                        'conditions' => $data[$i]->conditions,
+                        'total' => $data[$i]->total,
+                        'next_class' => $new_class[$rotate],
+                        'name_split' => $data[$i]->name_split,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]);
 
         }
 
-         function separate ($data, $new_class)
+
+        function separate($data, $new_class)
         {
 
             for ($i = 0; $i < count($data); $i++) {
-                $rotate = $i % $_REQUEST['next_class'];
-
-                //dd($rotate);
-                switch ($rotate) {
-                    case 0:
-
-                        insert_new_class($data, $new_class, $rotate, $i);
-                        break;
-
-                    case 1:
-                        insert_new_class($data, $new_class, $rotate, $i);
-
-                        break;
-
-                    case 2:
-                        insert_new_class($data, $new_class, $rotate, $i);
-
-                        break;
-
-                    case 3:
-                        insert_new_class($data, $new_class, $rotate, $i);
-                        break;
-
-                    case 4:
-                        insert_new_class($data, $new_class, $rotate, $i);
-
-                        break;
-
-                    case 5:
-                        insert_new_class($data, $new_class, $rotate, $i);
-
-                        break;
-
-                    case 6:
-                        insert_new_class($data, $new_class, $rotate, $i);
-
-                        break;
-
-                    case 7:
-                        insert_new_class($data, $new_class, $rotate, $i);
-
-                        break;
-
-                    case 8:
-                        insert_new_class($data, $new_class, $rotate, $i);
-                        break;
-
-                    case 9:
-                        insert_new_class($data, $new_class, $rotate, $i);
-
-                        break;
-
-                    case 10:
-                        insert_new_class($data, $new_class, $rotate, $i);
-
-                        break;
-
-                    case 11:
-                        insert_new_class($data, $new_class, $rotate, $i);
-
-                        break;
-
-                    case 12:
-                        insert_new_class($data, $new_class, $rotate, $i);
-
-                        break;
-
-                    case 13:
-                        insert_new_class($data, $new_class, $rotate, $i);
-
-                        break;
-
-                    case 14:
-                        insert_new_class($data, $new_class, $rotate, $i);
-
-                        break;
-
-                    case 15:
-                        insert_new_class($data, $new_class, $rotate, $i);
-
-                        break;
-
-                    case 16:
-                        insert_new_class($data, $new_class, $rotate, $i);
-                        break;
-
-                    case 17:
-                        insert_new_class($data, $new_class, $rotate, $i);
-
-                        break;
-
-                    case 18:
-                        insert_new_class($data, $new_class, $rotate, $i);
-
-                        break;
-
-                    case 19:
-                        insert_new_class($data, $new_class, $rotate, $i);
-
-                        break;
-
-                    case 20:
-                        insert_new_class($data, $new_class, $rotate, $i);
-
-                        break;
 
 
+                    $rotate = $i % $_REQUEST['next_class'];
 
 
-                }
+                    switch ($rotate) {
+                        case 0:
+
+                            insert_new_class($data, $new_class, $rotate, $i);
+
+                            break;
+
+
+                        case 1:
+                            insert_new_class($data, $new_class, $rotate+1, $i);
+
+                            break;
+
+                        case 2:
+                            insert_new_class($data, $new_class, $rotate, $i);
+
+                            break;
+
+                        case 3:
+                            insert_new_class($data, $new_class, $rotate, $i);
+                            break;
+
+                        case 4:
+                            insert_new_class($data, $new_class, $rotate, $i);
+
+                            break;
+
+                        case 5:
+                            insert_new_class($data, $new_class, $rotate, $i);
+
+                            break;
+
+                        case 6:
+                            insert_new_class($data, $new_class, $rotate, $i);
+
+                            break;
+
+                        case 7:
+                            insert_new_class($data, $new_class, $rotate, $i);
+
+                            break;
+
+                        case 8:
+                            insert_new_class($data, $new_class, $rotate, $i);
+                            break;
+
+                        case 9:
+                            insert_new_class($data, $new_class, $rotate, $i);
+
+                            break;
+
+                        case 10:
+                            insert_new_class($data, $new_class, $rotate, $i);
+
+                            break;
+
+                        case 11:
+                            insert_new_class($data, $new_class, $rotate, $i);
+
+                            break;
+
+                        case 12:
+                            insert_new_class($data, $new_class, $rotate, $i);
+
+                            break;
+
+                        case 13:
+                            insert_new_class($data, $new_class, $rotate, $i);
+
+                            break;
+
+                        case 14:
+                            insert_new_class($data, $new_class, $rotate, $i);
+
+                            break;
+
+                        case 15:
+                            insert_new_class($data, $new_class, $rotate, $i);
+
+                            break;
+
+                        case 16:
+                            insert_new_class($data, $new_class, $rotate, $i);
+                            break;
+
+                        case 17:
+                            insert_new_class($data, $new_class, $rotate, $i);
+
+                            break;
+
+                        case 18:
+                            insert_new_class($data, $new_class, $rotate, $i);
+
+                            break;
+
+                        case 19:
+                            insert_new_class($data, $new_class, $rotate, $i);
+
+                            break;
+
+                        case 20:
+                            insert_new_class($data, $new_class, $rotate, $i);
+
+                            break;
+
+
+
+
+                    }
+
 
             }
-
-            // $new_data = DB::table($table)
-            // ->insert([
-            //     'school_name' => $data[$i]->school_name,
-            //     'grade' => $data[$i]->grade,
-            //     'class' => $data[$i]->class,
-            //     'numbers' => $data[$i]->numbers,
-            //     'name' => $data[$i]->name,
-            //     'sex' => $data[$i]->sex,
-            //     'atitude' => $data[$i]->atitude,
-            //     'ability' => $data[$i]->ability,
-            //     'friendship' => $data[$i]->friendship,
-            //     'conditions' => $data[$i]->conditions,
-            //     'total' => $data[$i]->total,
-            //     'next_class' => $data[$i]->next_class,
-            //     'name_split' => $data[$i]->name_split,
-            //     'created_at' => now(),
-            // ]);
         }
-        for ($i = 0; $i < $request->current_class; $i++) {
-            $table = 'class' . ($i+1).'s';
+        for ($i = 0; $i < $request->next_class; $i++) {
+            $table = 'class' . ($i + 1) . 's';
+
             switch ($random) {
                 case 0:
                     $data = DB::table($table)
                         ->where('school_name', $request->school_name)
                         ->where('grade', $request->current_grade)
-                        ->where('conditions', null)
+                        //->where('conditions', null)
                         ->orderBy('sex', 'desc')
                         ->orderBy('total', 'desc')
                         ->get();
-                        separate($data, $new_class);
+                    separate($data, $new_class);
                     break;
 
                 case 1:
                     $data = DB::table($table)
                         ->where('school_name', $request->school_name)
                         ->where('grade', $request->current_grade)
-                        ->where('conditions', null)
+                        //->where('conditions', null)
                         ->orderBy('sex', 'desc')
                         ->orderBy('total', 'asc')
                         ->get();
-                        separate($data, $new_class);
+                    separate($data, $new_class);
                     break;
 
                 case 2:
                     $data = DB::table($table)
                         ->where('school_name', $request->school_name)
                         ->where('grade', $request->current_grade)
-                        ->where('conditions', null)
+                        //->where('conditions', null)
                         ->orderBy('sex', 'desc')
-                        ->orderBy('atutude', 'desc')
+                        ->orderBy('atitude', 'desc')
                         ->orderBy('ability', 'desc')
                         ->get();
-                        separate($data, $new_class);
+                    separate($data, $new_class);
                     break;
 
                 case 3:
                     $data = DB::table($table)
                         ->where('school_name', $request->school_name)
                         ->where('grade', $request->current_grade)
-                        ->where('conditions', null)
+                        //->where('conditions', null)
                         ->orderBy('sex', 'desc')
                         ->orderBy('ability', 'desc')
                         ->orderBy('friendship', 'desc')
                         ->get();
-                        separate($data, $new_class);
+                    separate($data, $new_class);
                     break;
 
                 case 4:
                     $data = DB::table($table)
                         ->where('school_name', $request->school_name)
                         ->where('grade', $request->current_grade)
-                        ->where('conditions', null)
+                        //->where('conditions', null)
                         ->orderBy('sex', 'desc')
                         ->orderBy('friendship', 'asc')
-                        ->orderBy('atutude', 'asc')
+                        ->orderBy('atitude', 'asc')
                         ->get();
-                        separate($data, $new_class);
+                    separate($data, $new_class);
                     break;
 
                 case 5:
                     $data = DB::table($table)
                         ->where('school_name', $request->school_name)
                         ->where('grade', $request->current_grade)
-                        ->where('conditions', null)
+                        //->where('conditions', null)
                         ->orderBy('sex', 'desc')
-                        ->orderBy('atutude', 'asc')
+                        ->orderBy('atitude', 'asc')
                         ->orderBy('ability', 'asc')
                         ->get();
-                        separate($data, $new_class);
+                    separate($data, $new_class);
                     break;
 
                 case 6:
                     $data = DB::table($table)
                         ->where('school_name', $request->school_name)
                         ->where('grade', $request->current_grade)
-                        ->where('conditions', null)
+                        //->where('conditions', null)
                         ->orderBy('sex', 'desc')
                         ->orderBy('ability', 'asc')
                         ->orderBy('friendship', 'asc')
                         ->get();
-                        separate($data, $new_class);
+                    separate($data, $new_class);
                     break;
 
                 case 7:
                     $data = DB::table($table)
                         ->where('school_name', $request->school_name)
                         ->where('grade', $request->current_grade)
-                        ->where('conditions', null)
+                        //->where('conditions', null)
                         ->orderBy('sex', 'desc')
                         ->orderBy('friendship', 'asc')
-                        ->orderBy('atutude', 'asc')
+                        ->orderBy('atitude', 'asc')
                         ->get();
-                        separate($data, $new_class);
+                    separate($data, $new_class);
                     break;
 
             }

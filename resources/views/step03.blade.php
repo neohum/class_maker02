@@ -59,13 +59,32 @@
                                     <div class="items-center col-xl-12 col-md-12 col-sm-12 col-12">
                                         <h2 class="mx-4 mt-4 item-center p-y4">{{ $school_name }} 의 반편성 과정 2</h2>
                                         <div class="container">
-                                            {{-- <a type="submit"
+                                            <a type="submit"
                                                 href="{{ route('store1') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&next_class={{ $_REQUEST['next_class'] }}"
                                                 class="btn btn-primary pull-left">편성결과 엑셀로 받기(내년반 기준)</a>
 
                                             <a type="submit"
                                                 href="{{ route('store2') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&next_class={{ $_REQUEST['next_class'] }}"
-                                                class="btn btn-primary pull-left">편성결과 엑셀로 받기(현재반 기준)</a> --}}
+                                                class="btn btn-primary pull-left">편성결과 엑셀로 받기(현재반 기준)</a>
+                                                <a type="submit"
+                                                href="{{ route('store3') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&next_class={{ $_REQUEST['next_class'] }}"
+                                                class="btn btn-primary pull-left">편성결과 엑셀로 받기(현재반 기준)</a>
+                                                <a type="submit"
+                                                href="{{ route('store4') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&next_class={{ $_REQUEST['next_class'] }}"
+                                                class="btn btn-primary pull-left">편성결과 엑셀로 받기(현재반 기준)</a>
+                                                <a type="submit"
+                                                    href="{{ route('store5') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&next_class={{ $_REQUEST['next_class'] }}"
+                                                    class="btn btn-primary pull-left">편성결과 엑셀로 받기(현재반 기준)</a>
+                                                    <a type="submit"
+                                                        href="{{ route('store6') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&next_class={{ $_REQUEST['next_class'] }}"
+                                                        class="btn btn-primary pull-left">편성결과 엑셀로 받기(현재반 기준)</a>
+                                                        <a type="submit"
+                                                            href="{{ route('store7') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&next_class={{ $_REQUEST['next_class'] }}"
+                                                            class="btn btn-primary pull-left">편성결과 엑셀로 받기(현재반 기준)</a>
+                                                            <a type="submit"
+                                                                href="{{ route('store8') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&next_class={{ $_REQUEST['next_class'] }}"
+                                                                class="btn btn-primary pull-left">편성결과 엑셀로 받기(현재반 기준)</a>
+                                                                
                                         </div>
                                     </div>
                                 </div>

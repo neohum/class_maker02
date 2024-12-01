@@ -40,10 +40,5 @@ Route::get('/step04', [Step04Controller::class, 'delete'])->name('step04.delete'
 
 Route::get('/store1', [Step03Controller::class, 'store1'])->name('store1');
 Route::get('/store2', [Step03Controller::class, 'store2'])->name('store2');
-Route::get('/store3', [Step03Controller::class, 'store3'])->name('store3');
-Route::get('/store4', [Step03Controller::class, 'store4'])->name('store4');
-Route::get('/store5', [Step03Controller::class, 'store5'])->name('store5');
-Route::get('/store6', [Step03Controller::class, 'store6'])->name('store6');
-Route::get('/store7', [Step03Controller::class, 'store7'])->name('store7');
-Route::get('/store8', [Step03Controller::class, 'store8'])->name('store8');
+
 

@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\DB;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-use function PHPSTORM_META\type;
 
 class Step03Controller extends Controller
 {
@@ -16,81 +15,86 @@ class Step03Controller extends Controller
         $new_class = ['가', '나', '다', '라', '마', '바', '사', '아', '자', '차', '카', '타', '파', '하', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
         $new_data = [];
         $rotate = 0;
+        $random = rand(0, 7);
 
-        $new_data = DB::table('step01s')
-            ->where('school_name', $_REQUEST['school_name'])
-            ->where('grade', $_REQUEST['current_grade'])
-            ->orderBy('class', 'asc')
-            ->orderBy('numbers', 'asc')
-            ->orderBy('total', 'desc')
-            ->get();
-        // $random = rand(0, 7);
-        // switch ($random ){
-        //     case 0:
-        //         $new_data = DB::table('step01s')
-        //         ->where('school_name', $_REQUEST['school_name'])
-        //         ->where('grade', $_REQUEST['current_grade'])
-        //         ->get();
-        //         break;
-        //     case 1:
-        //         $new_data = DB::table('step01s')
-        //         ->where('school_name', $_REQUEST['school_name'])
-        //         ->where('grade', $_REQUEST['current_grade'])
-        //         ->orderBy('atitude', 'asc')
-        //         ->get();
-        //         break;
 
-        //     case 2:
-        //         $new_data = DB::table('step01s')
-        //         ->where('school_name', $_REQUEST['school_name'])
-        //         ->where('grade', $_REQUEST['current_grade'])
-        //         ->orderBy('ability', 'asc')
-        //         ->get();
-        //         break;
+        switch ($random){
+            case 0:
+                $new_data = DB::table('step01s')
+                            ->where('school_name', $_REQUEST['school_name'])
+                            ->where('grade', $_REQUEST['current_grade'])
+                            ->orderBy('class', 'asc')
+                            ->orderBy('numbers', 'asc')
+                            ->orderBy('total', 'desc')
+                            ->get();
+                break;
+            case 1:
+                $new_data = DB::table('step01s')
+                            ->where('school_name', $_REQUEST['school_name'])
+                            ->where('grade', $_REQUEST['current_grade'])
+                            ->orderBy('class', 'asc')
+                            ->orderBy('numbers', 'asc')
+                            ->orderBy('total', 'asc')
+                            ->get();
+                break;
+            case 2:
+                $new_data = DB::table('step01s')
+                            ->where('school_name', $_REQUEST['school_name'])
+                            ->where('grade', $_REQUEST['current_grade'])
+                            ->orderBy('class', 'asc')
+                            ->orderBy('name', 'asc')
+                            ->orderby('atitude', 'desc')
+                            ->get();
+                break;
+            case 3:
+                $new_data = DB::table('step01s')
+                            ->where('school_name', $_REQUEST['school_name'])
+                            ->where('grade', $_REQUEST['current_grade'])
+                            ->orderBy('class', 'asc')
 
-        //     case 3:
-        //         $new_data = DB::table('step01s')
-        //         ->where('school_name', $_REQUEST['school_name'])
-        //         ->where('grade', $_REQUEST['current_grade'])
-        //         ->orderBy('friendship', 'asc')
-        //         ->get();
-        //         break;
+                            ->orderby('ability', 'desc')
+                            ->get();
+                break;
+            case 4:
+                $new_data = DB::table('step01s')
+                            ->where('school_name', $_REQUEST['school_name'])
+                            ->where('grade', $_REQUEST['current_grade'])
+                            ->orderBy('class', 'asc')
 
-        //     case 4:
-        //         $new_data = DB::table('step01s')
-        //         ->where('school_name', $_REQUEST['school_name'])
-        //         ->where('grade', $_REQUEST['current_grade'])
-        //         ->orderBy('total', 'asc')
-        //         ->get();
-        //         break;
+                            ->orderby('friendship', 'desc')
+                            ->get();
+                break;
+            case 5:
+                $new_data = DB::table('step01s')
+                            ->where('school_name', $_REQUEST['school_name'])
+                            ->where('grade', $_REQUEST['current_grade'])
+                            ->orderBy('class', 'asc')
 
-        //     case 5:
-        //         $new_data = DB::table('step01s')
-        //         ->where('school_name', $_REQUEST['school_name'])
-        //         ->where('grade', $_REQUEST['current_grade'])
-        //         ->orderBy('atitude', 'asc')
-        //         ->orderBy('ability', 'asc')
-        //         ->get();
-        //         break;
+                            ->orderby('atitude', 'asc')
+                            ->get();
+                break;
+            case 6:
+                $new_data = DB::table('step01s')
+                            ->where('school_name', $_REQUEST['school_name'])
+                            ->where('grade', $_REQUEST['current_grade'])
+                            ->orderBy('class', 'asc')
 
-        //     case 6:
-        //         $new_data = DB::table('step01s')
-        //         ->where('school_name', $_REQUEST['school_name'])
-        //         ->where('grade', $_REQUEST['current_grade'])
-        //         ->orderBy('atitude', 'asc')
-        //         ->orderBy('friendship', 'asc')
-        //         ->get();
-        //         break;
+                            ->orderby('ability', 'asc')
+                            ->get();
+                break;
 
-        //     case 7:
-        //         $new_data = DB::table('step01s')
-        //         ->where('school_name', $_REQUEST['school_name'])
-        //         ->where('grade', $_REQUEST['current_grade'])
-        //         ->orderBy('ability', 'asc')
-        //         ->orderBy('friendship', 'asc')
-        //         ->get();
-        //         break;
-        // }
+            case 7:
+                $new_data = DB::table('step01s')
+                            ->where('school_name', $_REQUEST['school_name'])
+                            ->where('grade', $_REQUEST['current_grade'])
+                            ->orderBy('class', 'asc')
+
+                            ->orderby('friendship', 'asc')
+                            ->get();
+                break;
+
+        }
+
 
 
         $counter = 0;
@@ -262,7 +266,9 @@ class Step03Controller extends Controller
             $new_data1[$i] = DB::table('class' . $i . 's')
                 ->where('school_name', $_REQUEST['school_name'])
                 ->where('grade', $_REQUEST['current_grade'])
+                ->orderBy('class', 'asc')
                 ->orderBy('numbers', 'asc')
+
                 ->get();
             $new_data = array_merge($new_data, $new_data1[$i]->toArray());
 
@@ -359,6 +365,9 @@ class Step03Controller extends Controller
             $new_data1[$i] = DB::table('class' . $i . 's')
                 ->where('school_name', $_REQUEST['school_name'])
                 ->where('grade', $_REQUEST['current_grade'])
+                ->orderBy('class', 'asc')
+                ->orderBy('numbers', 'asc')
+                ->orderBy('next_class', 'asc')
                 ->get();
 
             $new_data = array_merge($new_data, $new_data1[$i]->toArray());
@@ -831,4 +840,5 @@ class Step03Controller extends Controller
 
     }
 }
+
 

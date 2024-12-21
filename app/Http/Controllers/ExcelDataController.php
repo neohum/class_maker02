@@ -631,7 +631,9 @@ public function index(Request $request)
     } catch (\Exception $e) {
         DB::rollBack();
         return response()->json(['error' => $e->getMessage()], 500);
-}
-}
+        }
+    }
+
+    
 }
 

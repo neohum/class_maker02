@@ -24,7 +24,7 @@ return new class extends Migration
             $table->integer('friendship');
             $table->integer('conditions')->nullable();
             $table->integer('total');
-            $table->integer('next_class');
+            $table->string('next_class');
             $table->string('name_split');
             $table->timestamps();
         });

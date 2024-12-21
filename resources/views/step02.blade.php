@@ -16,6 +16,9 @@
     <a type="submit"
         href="{{ route('store2') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&next_class={{ $_REQUEST['next_class'] }}"
         class="btn btn-primary pull-left">편성결과 엑셀로 받기(현재반 기준)</a>
+    <a type="submit"
+        href="{{ route('step02.delete') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&next_class={{ $_REQUEST['next_class'] }}"
+        class="btn btn-danger pull-left">학생 데이터 모두 삭제</a>
 </div>
 
 

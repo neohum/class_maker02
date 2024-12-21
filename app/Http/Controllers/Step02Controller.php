@@ -851,7 +851,7 @@ class Step02Controller extends Controller
             $new_data1[$i] = DB::table('nclass' . $i . 's')
                 ->where('school_name', $_REQUEST['school_name'])
                 ->where('grade', $_REQUEST['current_grade'])
-                ->orderBy('new_class', 'asc')
+                ->orderBy('next_class', 'asc')
                 ->orderBy('sex', 'asc')
                 ->orderBy('name', 'asc')
                 ->get();

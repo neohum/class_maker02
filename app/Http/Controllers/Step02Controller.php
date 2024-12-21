@@ -448,13 +448,13 @@ class Step02Controller extends Controller
 
 
 
-        return view('step03', [
-            'school_name' => $request->school_name,
-            'current_grade' => $request->current_grade,
-            'current_class' => $request->current_class,
-            'next_grade' => $request->next_grade,
-            'next_class' => $request->next_class,
-        ]);
+    //     return view('step03', [
+    //         'school_name' => $request->school_name,
+    //         'current_grade' => $request->current_grade,
+    //         'current_class' => $request->current_class,
+    //         'next_grade' => $request->next_grade,
+    //         'next_class' => $request->next_class,
+    //     ]);
     }
 
     //
@@ -935,11 +935,11 @@ class Step02Controller extends Controller
 
 
 
-        return view('step03', [
-            'school_name' => $request->school_name,
-            'current_grade' => $request->current_grade,
-            'next_class' => $request->next_class,
-        ]);
+        // return view('step03', [
+        //     'school_name' => $request->school_name,
+        //     'current_grade' => $request->current_grade,
+        //     'next_class' => $request->next_class,
+        // ]);
 
     }
 
@@ -949,16 +949,16 @@ class Step02Controller extends Controller
 
 
 
-    public function store(Request $request)
-    {
+    // public function store(Request $request)
+    // {
 
-        redirect()->route('step03', [
-            'school_name' => $request->school_name,
-            'current_grade' => $request->current_grade,
-            'next_class' => $request->next_class,
-            'class' => $request->next_class
-        ]);
-    }
+    //     redirect()->route('step03', [
+    //         'school_name' => $request->school_name,
+    //         'current_grade' => $request->current_grade,
+    //         'next_class' => $request->next_class,
+    //         'class' => $request->next_class
+    //     ]);
+    // }
 
      public function delete(Request $request)
     {

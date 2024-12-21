@@ -70,8 +70,8 @@
                         <h3 class="wow fadeInUp" data-wow-delay="0.4s">짧은 시간에<br>최소한의 작업으로 하는 <br>반편성 서비스</h3>
                         <h5 class="wow fadeInUp" data-wow-delay="0.6s">아래의 샘플 데이터를 다운 받아 반편성 서비스를 테스트해 보세요</h5>
                         <h5 class="wow fadeInUp" data-wow-delay="0.8s">실제 서비스 사용을 위해 반편성 양식을 다운 받아 작성후 순서에 따라 반편성을 진행해보세요.</h5>
-                        <h5 class="wow fadeInUp" data-wow-delay="0.10s">파일명은 1-1, 1-2, 형태로 통일해 주시고 각 반마다 한개의 파일을 만드셔야 합니다.</h5>
-                        <h5 class="wow fadeInUp" data-wow-delay="0.12s">결과 파일은 엑셀로 나오며, 네가지의 확률 반편성이 이루어지니 반편성을 다시 하고자 하신다면 처음부터 다시 시작하시면 됩니다.</h5>
+                        <h5 class="wow fadeInUp" data-wow-delay="0.10s">파일명은 1_1, 1_2, 형태로 통일해 주시고 각 반마다 한개의 파일을 만드셔야 합니다.</h5>
+                        <h5 class="wow fadeInUp" data-wow-delay="0.12s">결과 파일은 엑셀로 나오며, 일곱가지의 확률 반편성이 이루어지니 반편성을 다시 하고자 하신다면 처음부터 다시 시작하시면 됩니다.</h5>
                         <h5 class="wow fadeInUp" data-wow-delay="0.14s">수업태도, 학습능력, 교우관계에 대해 1~5점을 숫자로만 입력해주세요. 예)1(나쁨), 5(아주 좋음)</h5>
                         <div class="slider-btn mt-30">
                             <a class="mb-2 mr-2 boxed-btn" href="./file/1_1.xlsx"><span>반편성 양식</span></a>

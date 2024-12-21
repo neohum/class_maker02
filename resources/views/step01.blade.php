@@ -26,25 +26,13 @@
         <div class="container">
             <div class="container">
                 <div class="items-center col">
-                    <button type="submit" class="btn pull-left">1.학교 정보 입력하기</button>
-                    --->
-                    <br>
-                    <br>
-                    <button type="submit" class="btn pull-left">2.엑셀 파일 올리기</button>
-                    --->
+
                     <br>
                     <br>
                     <a type="submit"
                         href="{{ route('step02') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&current_class={{ $_REQUEST['current_class'] }}&next_grade={{ $_REQUEST['next_grade'] }}&next_class={{ $_REQUEST['next_class'] }}"
-                        class="btn btn-primary pull-left">3. 중복된 이름 찾기(클릭하세요)</a>
-                        --->
-                    <br>
-                    <br>
-                    <button type="submit" class="btn pull-left">4.반편성 과정 1</button>
-                    --->
-                    <br>
-                    <br>
-                    <button type="submit" class="btn pull-left">5.반편성 과정 2</button>
+                        class="btn btn-primary pull-left">3. 반편성하기(학생 배치 및 중복 이름 체크)</a>
+
 
                     <div id="flStackForm" class="items-center col-lg-12 layout-spacing layout-top-spacing">
                         <div class="items-center statbox widget box box-shadow">

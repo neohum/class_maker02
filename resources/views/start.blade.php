@@ -27,7 +27,7 @@
                                 <div class="items-center row">
                                     <div class="items-center col-xl-12 col-md-12 col-sm-12 col-12">
                                         <h2 class="mx-4 mt-4 item-center p-y4">반편성 서비스</h2>
-                                        <h4 class="mt-4">1. 학교정보입력하기</h4>
+                                        <h4 class="mt-4">1. 학교 및 학년 정보입력하기</h4>
                                     </div>
                                 </div>
                             </div>
@@ -76,24 +76,39 @@
                                             이전 화면으로 되돌아 가시면 데이터가 중복으로 저장됩니다. 전 과정을 실행하시면 다시 첫페이지로 가실 수 있습니다.
                                         </div>
                                     </div>
+                                    <div class="mb-4 row">
+                                        <div class="col-sm-12">
+                                            중간에 오류가 있으면 "뒤로가기"를 누르지 마시고 전과정을 진행 후 다시 시작 하시면 됩니다.
+                                        </div>
+                                    </div>
 
-                                    <button type="submit" class="btn btn-primary pull-left">1.학교 정보 입력하기(정보 저장은 여기를 클릭)</button>
-                                    ---> <!--<button type="submit" class="btn btn-primary pull-left">다음 페이지로 이동</button>-->
+                                    <button type="submit" class="btn btn-primary pull-left">1.학교 및 학년 정보 입력하기</button>
+                                    <!--<button type="submit" class="btn btn-primary pull-left">다음 페이지로 이동</button>-->
                                     <br>
-                                    <br>
-                                    <button type="submit" class="btn btn-secodary pull-left" >2.엑셀 파일 올리기</button>
-                                    --->
-                                    <br>
-                                    <br>
-                                    <button type="submit" class="btn btn-secodary pull-left">3. 중복된 이름 찾기(클릭하세요)</button>
-                                    --->
-                                    <br>
-                                    <br>
-                                    <button type="submit" class="btn btn-secodary pull-left">4.결과 확인 및 엑셀 다운로드</button>
-                                    --->
-                                    <br>
-                                    <br>
-                                    <button type="submit" class="btn btn-secodary pull-left">5.데이터 삭제하기</button>
+                                    <!-- Button trigger modal -->
+                                    {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        1. 학교 및 학년 정보 입력하기
+                                    </button> --}}
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">학교 및 학년 정보 입력하기</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    입력 내용을 다시 한번 더 확인해 주세요
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소(편집화면으로 돌아가기)</button>
+                                                    <button type="submit" class="btn btn-primary">저장하기(다음으로 진행)</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </form>
                             </div>
                         </div>

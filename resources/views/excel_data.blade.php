@@ -23,12 +23,13 @@
                             <div class="widget-header itmes-center">
                                 <div class="items-center row">
                                     <div class="items-center col-xl-12 col-md-12 col-sm-12 col-12">
-                                        <h2 class="mx-4 mt-4 item-center p-y4">반편성 서비스</h2>
                                         <h4 class="mt-4">2. 엑셀 파일 올리기</h4>
-                                        <h5 class="mt-4">- 모든 반의 엑셀 파일을 한 번에 드래그하여 올리시면 됩니다.</h5>
-                                        <h5 class="mt-4">- "2. 다음 페이지로 이동" 버튼을 누르기 전, 엑셀 파일이 모두 올라갔는지 꼭 확인하세요. 순서는 상관없습니다. </h5>
-                                        <h5 class="mt-4">- 만약, 하나이상의 파일이 누락된 경우, 누락된 파일만 다시 올려주시면 됩니다.</h5>
-                                        <h5 class="mt-4">- 아래 네모 칸을 클릭하셔도 됩니다.</h5>
+                                        <h6 class="mt-4">- 모든 반의 엑셀 파일을 한 번에 드래그하여 올리시면 됩니다.</h6>
+                                        <h6 class="mt-4">- "2. 다음 페이지로 이동" 버튼을 누르기 전, 엑셀 파일이 모두 올라갔는지 꼭 확인하세요. 순서는 상관없습니다. </h6>
+                                        <h6 class="mt-4">- 만약, 하나이상의 파일이 누락된 경우, 누락된 파일만 다시 올려주시면 됩니다.</h6>
+                                        <h6 class="mt-4">- 아래 네모 칸을 클릭하셔도 됩니다.</h6>
+                                        <h6 class="mt-4">- 해당 반 편성은 학생들을 골고루 섞고 이름 중복을 표시해줍니다. 세부적인 세팅 즉, 다른반, 분리 학생 등은 수작업으로 하셔야 합니다.</h6>
+                                        <h6 class="mt-4">- 이전 데이터가 남아 있는 경우, "테이터 삭제하기"버튼이 뜹니다. 버튼 클릭 후 처음 부터 다시 하시면 됩니다.</h6>
                                     </div>
                                 </div>
                                 @if ( $schoolinfo == 'true')
@@ -50,26 +51,11 @@
                                     <input type="hidden" name="school_name" value={{ $_REQUEST['school_name'] }}>
                                 </form>
                                 <br>
-                                <br>
-                                <button type="submit" class="btn pull-left">1.학교 정보 입력하기</button>
-                                --->
-                                <br>
-                                <br>
+
                                 <a type="submit"
                                     href="{{ route('step01') }}/?school_name={{ $_REQUEST['school_name'] }}&current_grade={{ $_REQUEST['current_grade']}}&current_class={{ $_REQUEST['current_class'] }}&next_grade={{ $_REQUEST['next_grade'] }}&next_class={{ $_REQUEST['next_class'] }}"
-                                    class="btn btn-primary pull-left">2. 다음 페이지로 이동</a>
-                                --->
-                                <br>
-                                <br>
-                                <button type="submit" class="btn pull-left">3. 중복된 이름 찾기(클릭하세요)</button>
-                                --->
-                                <br>
-                                <br>
-                                <button type="submit" class="btn pull-left">4.결과 확인 및 엑셀 다운로드</button>
-                                --->
-                                <br>
-                                <br>
-                                <button type="submit" class="btn pull-left">5.데이터 삭제하기</button>
+                                    class="btn btn-primary pull-left">2. 업로드 정보 확인하기</a>
+
 
                             </div>
                         </div>

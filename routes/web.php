@@ -27,19 +27,21 @@ Route::get('/step01', [Step01Controller::class, 'index'])->name('step01');
 Route::get('/step02', [Step02Controller::class, 'index'])->name('step02');
 //Route::get('/step01_store', [Step02Controller::class, 'index'])->name('step01_store');
 Route::get('/step02/delete', [Step02Controller::class, 'delete'])->name('step02.delete');
+Route::get('/step02/store1', [Step02Controller::class, 'store1'])->name('step02.store1');
+Route::get('/step02/store2', [Step02Controller::class, 'store2'])->name('step02.store2');
 
-Route::get('/step03', [Step03Controller::class, 'index'])->name('step03');
+// Route::get('/step03', [Step03Controller::class, 'index'])->name('step03');
 
-Route::get('/step03_01', [Step03_01_Controller::class, 'index'])->name('step03_01');
+// Route::get('/step03_01', [Step03_01_Controller::class, 'index'])->name('step03_01');
 
-Route::get('/step03_02', [Step03_02_Controller::class, 'index'])->name('step03_02');
+// Route::get('/step03_02', [Step03_02_Controller::class, 'index'])->name('step03_02');
 
-Route::get('/step03_03', [Step03_03_Controller::class, 'index'])->name('step03_03');
+// Route::get('/step03_03', [Step03_03_Controller::class, 'index'])->name('step03_03');
 
-Route::get('/step04', [Step04Controller::class, 'index'])->name('step04');
-Route::get('/step04', [Step04Controller::class, 'delete'])->name('step04.delete');
+// Route::get('/step04', [Step04Controller::class, 'index'])->name('step04');
+// Route::get('/step04', [Step04Controller::class, 'delete'])->name('step04.delete');
 
-Route::get('/store1', [Step03Controller::class, 'store1'])->name('store1');
-Route::get('/store2', [Step03Controller::class, 'store2'])->name('store2');
+// Route::get('/store1', [Step03Controller::class, 'store1'])->name('store1');
+// Route::get('/store2', [Step03Controller::class, 'store2'])->name('store2');
 
 
